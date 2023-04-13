@@ -9,7 +9,7 @@ import axios from "axios";
 import { eventNames } from "../../../../api/models/User";
 
 export default function Home() {
-  axios = axios.create({ baseURL: process.env.API_URL });
+  const axios = axiosInstance.create({ baseURL: process.env.REACT_APP_API_URL });
   const MONTHS = useMemo(
     () => [
       "Jan",
@@ -33,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("/users/stats", {
+        const res = await axiosInstance.get("/users/stats", {
           headers: {
             token:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTZmYzQ2NDk0Mjc3MTYwNDg4MmMxNiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNTgzMjMxMSwiZXhwIjoxNjI2MjY0MzExfQ.ATXV-1TTWIGyVBttTQSf0erRWjsgZ8jHQv1ZsUixbng",
